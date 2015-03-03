@@ -1,0 +1,95 @@
+# for a specific subset of $n training utterances
+n=20; for x in exp/*/decode*; do [ -d $x ] && echo $x|grep "/.*${n}/" && grep WER ${x}/wer_* | utils/best_wer.sh; done
+
+# for all subsets including full set
+for x in exp/*/decode*; do [ -d $x ] && grep WER $x/wer_* | utils/best_wer.sh; done
+
+#trn: 20
+old
+%WER 59.02 [ 3200 / 5422, 30 ins, 1105 del, 2065 sub ] exp/mono20/decode/wer_13
+%WER 59.63 [ 3233 / 5422, 51 ins, 1152 del, 2030 sub ] exp/tri120/decode/wer_13
+%WER 61.66 [ 3343 / 5422, 40 ins, 1135 del, 2168 sub ] exp/tri2a20/decode/wer_13
+%WER 61.55 [ 3337 / 5422, 15 ins, 1423 del, 1899 sub ] exp/tri2b20/decode/wer_13
+%WER 55.63 [ 3016 / 5422, 13 ins, 1328 del, 1675 sub ] exp/tri3b20/decode/wer_12
+%WER 61.95 [ 3359 / 5422, 16 ins, 1480 del, 1863 sub ] exp/tri3b20/decode.si/wer_12
+
+new <<<<<<<<<<<<<<< run this again on ifp-48. Big diff b/w old and new scores.
+%WER 70.32 [ 3813 / 5422, 38 ins, 1358 del, 2417 sub ] exp/mono20/decode/wer_13
+%WER 71.01 [ 3850 / 5422, 37 ins, 1283 del, 2530 sub ] exp/tri120/decode/wer_13
+%WER 71.98 [ 3903 / 5422, 53 ins, 1248 del, 2602 sub ] exp/tri2a20/decode/wer_13
+%WER 69.00 [ 3741 / 5422, 22 ins, 1483 del, 2236 sub ] exp/tri2b20/decode/wer_10
+%WER 66.23 [ 3591 / 5422, 21 ins, 1545 del, 2025 sub ] exp/tri3b20/decode/wer_10
+%WER 72.04 [ 3906 / 5422, 34 ins, 1447 del, 2425 sub ] exp/tri3b20/decode.si/wer_8
+
+#trn: 50
+new
+%WER 24.60 [ 1334 / 5422, 58 ins, 422 del, 854 sub ] exp/mono50/decode/wer_13
+%WER 28.29 [ 1534 / 5422, 79 ins, 429 del, 1026 sub ] exp/tri150/decode/wer_13
+%WER 26.50 [ 1437 / 5422, 82 ins, 420 del, 935 sub ] exp/tri2a50/decode/wer_13
+%WER 26.60 [ 1442 / 5422, 52 ins, 503 del, 887 sub ] exp/tri2b50/decode/wer_13
+%WER 24.23 [ 1314 / 5422, 40 ins, 453 del, 821 sub ] exp/tri3b50/decode/wer_13
+%WER 28.33 [ 1536 / 5422, 62 ins, 505 del, 969 sub ] exp/tri3b50/decode.si/wer_13
+
+
+#trn: 100
+old
+%WER 18.33 [ 994 / 5422, 32 ins, 367 del, 595 sub ] exp/mono100/decode/wer_13
+%WER 19.70 [ 1068 / 5422, 96 ins, 301 del, 671 sub ] exp/tri1100/decode/wer_13
+%WER 19.29 [ 1046 / 5422, 108 ins, 278 del, 660 sub ] exp/tri2a100/decode/wer_13
+%WER 19.77 [ 1072 / 5422, 73 ins, 334 del, 665 sub ] exp/tri2b100/decode/wer_13
+%WER 17.96 [ 974 / 5422, 76 ins, 304 del, 594 sub ] exp/tri3b100/decode/wer_13
+%WER 20.84 [ 1130 / 5422, 93 ins, 315 del, 722 sub ] exp/tri3b100/decode.si/wer_13
+
+new
+%WER 18.44 [ 1000 / 5422, 43 ins, 347 del, 610 sub ] exp/mono100/decode/wer_13
+%WER 19.22 [ 1042 / 5422, 97 ins, 294 del, 651 sub ] exp/tri1100/decode/wer_13
+%WER 19.85 [ 1076 / 5422, 95 ins, 301 del, 680 sub ] exp/tri2a100/decode/wer_13
+%WER 19.09 [ 1035 / 5422, 70 ins, 340 del, 625 sub ] exp/tri2b100/decode/wer_13
+%WER 17.02 [ 923 / 5422, 71 ins, 293 del, 559 sub ] exp/tri3b100/decode/wer_13
+%WER 19.29 [ 1046 / 5422, 94 ins, 310 del, 642 sub ] exp/tri3b100/decode.si/wer_13
+
+#trn: 500
+old
+%WER 15.27 [ 828 / 5422, 63 ins, 284 del, 481 sub ] exp/mono500/decode/wer_10
+%WER 15.44 [ 837 / 5422, 125 ins, 236 del, 476 sub ] exp/tri1500/decode/wer_13
+%WER 14.90 [ 808 / 5422, 124 ins, 224 del, 460 sub ] exp/tri2a500/decode/wer_13
+%WER 15.40 [ 835 / 5422, 135 ins, 230 del, 470 sub ] exp/tri2b500/decode/wer_13
+%WER 13.00 [ 705 / 5422, 128 ins, 209 del, 368 sub ] exp/tri2b/decode/wer_13
+%WER 14.75 [ 800 / 5422, 155 ins, 215 del, 430 sub ] exp/tri3b500/decode/wer_13
+%WER 15.20 [ 824 / 5422, 129 ins, 232 del, 463 sub ] exp/tri3b500/decode.si/wer_13
+
+
+#trn: full set
+old
+%WER 15.03 [ 815 / 5422, 51 ins, 290 del, 474 sub ] exp/mono/decode/wer_11
+%WER 12.87 [ 698 / 5422, 133 ins, 194 del, 371 sub ] exp/tri1/decode/wer_13
+%WER 12.84 [ 696 / 5422, 127 ins, 198 del, 371 sub ] exp/tri2a/decode/wer_13
+%WER 13.00 [ 705 / 5422, 128 ins, 209 del, 368 sub ] exp/tri2b/decode/wer_13
+%WER 13.08 [ 709 / 5422, 155 ins, 194 del, 360 sub ] exp/tri3b/decode/wer_13
+%WER 13.28 [ 720 / 5422, 133 ins, 213 del, 374 sub ] exp/tri3b/decode.si/wer_13
+
+new
+%WER 14.87 [ 806 / 5422, 48 ins, 278 del, 480 sub ] exp/mono/decode/wer_10
+%WER 13.09 [ 710 / 5422, 123 ins, 202 del, 385 sub ] exp/tri1/decode/wer_13
+%WER 13.11 [ 711 / 5422, 132 ins, 203 del, 376 sub ] exp/tri2a/decode/wer_13
+%WER 13.52 [ 733 / 5422, 139 ins, 216 del, 378 sub ] exp/tri2b/decode/wer_13
+%WER 13.02 [ 706 / 5422, 162 ins, 186 del, 358 sub ] exp/tri3b/decode/wer_13
+%WER 13.72 [ 744 / 5422, 130 ins, 220 del, 394 sub ] exp/tri3b/decode.si/wer_13
+
+1800 leaves, 9000 mixtures
+%WER 14.94 [ 810 / 5422, 52 ins, 296 del, 462 sub ] exp/mono/decode/wer_11
+%WER 13.13 [ 712 / 5422, 109 ins, 223 del, 380 sub ] exp/tri1/decode/wer_13
+%WER 13.13 [ 712 / 5422, 122 ins, 212 del, 378 sub ] exp/tri2a/decode/wer_13
+%WER 13.24 [ 718 / 5422, 121 ins, 209 del, 388 sub ] exp/tri2b/decode/wer_13
+%WER 13.15 [ 713 / 5422, 145 ins, 205 del, 363 sub ] exp/tri3b/decode/wer_13
+%WER 13.39 [ 726 / 5422, 113 ins, 232 del, 381 sub ] exp/tri3b/decode.si/wer_13
+
+1500 leaves, 7500 mixtures
+%WER 14.94 [ 810 / 5422, 52 ins, 296 del, 462 sub ] exp/mono/decode/wer_11
+%WER 13.24 [ 718 / 5422, 136 ins, 194 del, 388 sub ] exp/tri1/decode/wer_11
+%WER 13.06 [ 708 / 5422, 129 ins, 200 del, 379 sub ] exp/tri2a/decode/wer_11
+%WER 13.52 [ 733 / 5422, 125 ins, 227 del, 381 sub ] exp/tri2b/decode/wer_13
+%WER 13.13 [ 712 / 5422, 147 ins, 198 del, 367 sub ] exp/tri3b/decode/wer_13
+%WER 13.11 [ 711 / 5422, 113 ins, 221 del, 377 sub ] exp/tri3b/decode.si/wer_12
+
+
